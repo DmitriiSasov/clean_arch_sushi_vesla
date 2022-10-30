@@ -13,6 +13,7 @@
         <module>blog-service-api</module>
         <module>blog-service-domain</module>
         <module>blog-service-infrastructure-database-mongo</module>
+        <module>blog-service-facade</module>
     </modules>
 
     <properties>
