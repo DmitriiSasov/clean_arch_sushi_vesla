@@ -7,8 +7,8 @@ import org.example.article.entity.ArticleEntity;
 import org.example.article.port.ArticleRepository;
 import org.example.article.port.filters.ArticleFilters;
 
-public class FindArticleByDescriptionUseCase extends AbstractFindWithFiltersUseCase<ArticleEntity, ArticleFilters, ArticleRepository> {
-    public FindArticleByDescriptionUseCase(ArticleRepository repository) {
+public class FindArticleByFiltersUseCase extends AbstractFindWithFiltersUseCase<ArticleEntity, ArticleFilters, ArticleRepository> {
+    public FindArticleByFiltersUseCase(ArticleRepository repository) {
         super(repository);
     }
 

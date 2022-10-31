@@ -28,9 +28,9 @@ public interface ArticleResource {
     @GetMapping(value = Routes.SINGLETON, produces = MediaType.APPLICATION_JSON_VALUE)
     SuccessApiResponse<ArticleResponse> getArticleSingleton(@PathVariable("id") String id);
 
-    @Operation(summary = "Поиск Articles по описанию (description)")
+    @Operation(summary = "Поиск Articles по описанию (description и title)")
     @GetMapping(value = Routes.COLLECTION, produces = MediaType.APPLICATION_JSON_VALUE)
-    SuccessApiResponse<SearchApiResponse<ArticleResponse>> getArticleCollection(@RequestBody SearchArticleCollectionRequest request);
+    SuccessApiResponse<SearchApiResponse<ArticleResponse>> getArticleCollection(SearchArticleCollectionRequest request);
 
     @Operation(summary = "Удаление Article по id")
     @DeleteMapping(value = Routes.SINGLETON, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -1,6 +1,5 @@
 package org.example.article;
 
-import com.rcore.domain.commons.usecase.UseCase;
 import com.rcore.domain.commons.usecase.UseCaseExecutor;
 import com.rcore.domain.commons.usecase.model.FiltersInputValues;
 import com.rcore.domain.commons.usecase.model.IdInputValues;
@@ -8,6 +7,7 @@ import com.rcore.rest.api.commons.response.OkApiResponse;
 import com.rcore.rest.api.commons.response.SearchApiResponse;
 import com.rcore.rest.api.commons.response.SuccessApiResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.article.config.ArticleConfig;
 import org.example.article.exceptions.ArticleNotFoundException;
 import org.example.article.mappers.ArticleResponseMapper;
@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 public class ArticleController implements ArticleResource{
@@ -59,7 +60,7 @@ public class ArticleController implements ArticleResource{
     @Override
     public SuccessApiResponse<SearchApiResponse<ArticleResponse>> getArticleCollection(SearchArticleCollectionRequest request) {
         return useCaseExecutor.execute(
-                articleConfig.findArticleByDescriptionUseCase(),
+                articleConfig.findArticleByFiltersUseCase(),
                 FiltersInputValues.of(ArticleSearchRequestMapper.toFilters(request)),
                 o -> SuccessApiResponse.of(
                         SearchApiResponse.withItemsAndCount(o.getResult().getItems()
@@ -83,6 +84,8 @@ public class ArticleController implements ArticleResource{
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String commonExceptionHandle(Exception e) {
+        log.error(e.getMessage());
+        e.printStackTrace();
         return e.getMessage();
     }
 }

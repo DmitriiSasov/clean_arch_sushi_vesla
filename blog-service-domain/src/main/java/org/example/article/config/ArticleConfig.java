@@ -14,7 +14,7 @@ public class ArticleConfig {
 
     private final DeleteArticleUseCase deleteArticleUseCase;
 
-    private final FindArticleByDescriptionUseCase findArticleByDescriptionUseCase;
+    private final FindArticleByFiltersUseCase findArticleByFiltersUseCase;
 
     private final FindArticleByIdUseCase findArticleByIdUseCase;
 
@@ -24,7 +24,7 @@ public class ArticleConfig {
         this.createArticleUseCase = new CreateArticleUseCase(repository, idGenerator);
         this.deleteArticleUseCase = new DeleteArticleUseCase(repository);
         this.findArticleByIdUseCase = new FindArticleByIdUseCase(repository);
-        this.findArticleByDescriptionUseCase = new FindArticleByDescriptionUseCase(repository);
+        this.findArticleByFiltersUseCase = new FindArticleByFiltersUseCase(repository);
         this.updateArticleUseCase = new UpdateArticleUseCase(repository);
     }
 }
