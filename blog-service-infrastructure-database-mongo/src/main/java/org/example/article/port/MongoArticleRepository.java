@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MongoArticleRepository extends AbstractMongoRepository<String, ArticleEntity, ArticleDoc, ArticleFilters> {
+public class MongoArticleRepository extends AbstractMongoRepository<String, ArticleEntity, ArticleDoc, ArticleFilters> implements ArticleRepository{
 
 
     public MongoArticleRepository(ArticleMapper mapper, MongoTemplate mongoTemplate) {
