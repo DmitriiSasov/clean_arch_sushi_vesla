@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: ftl-blog-service
+  data:
+    mongodb:
+      auto-index-creation: true
+      database: sushi_vesla_blog
+      uri: mongodb://localhost:27017
+
+
+springdoc:
+  packagesToScan: org.example
+  pathsToMatch: /**
+
+
+springfox:
+  documentation:
+    enabled: false
