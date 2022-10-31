@@ -11,7 +11,6 @@ import org.example.article.commons.request.AllArticleFieldsRequest;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class ArticleUpdateRequest extends AllArticleFieldsRequest {
 
 }

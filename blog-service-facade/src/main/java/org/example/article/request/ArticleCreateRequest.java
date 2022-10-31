@@ -11,6 +11,5 @@ import org.example.article.commons.request.BusinessLogicArticleFieldsRequest;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class ArticleCreateRequest extends BusinessLogicArticleFieldsRequest {
 }
