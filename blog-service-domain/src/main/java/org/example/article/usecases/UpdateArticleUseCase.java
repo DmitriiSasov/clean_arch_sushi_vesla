@@ -3,6 +3,8 @@ package org.example.article.usecases;
 import com.rcore.domain.commons.usecase.AbstractUpdateUseCase;
 import com.rcore.domain.commons.usecase.UseCase;
 import com.rcore.domain.commons.usecase.model.SingletonEntityOutputValues;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.article.entity.ArticleEntity;
@@ -30,7 +32,9 @@ public class UpdateArticleUseCase extends AbstractUpdateUseCase<ArticleEntity, A
         return SingletonEntityOutputValues.of(entity);
     }
 
-    @NoArgsConstructor
+    @AllArgsConstructor(staticName = "of")
+    @NoArgsConstructor(staticName = "empty")
+    @Builder
     @Data
     public static class InputValues implements UseCase.InputValues {
         protected String id;

@@ -1,11 +1,13 @@
 package org.example.article.config;
 
 import lombok.Getter;
+import lombok.experimental.Accessors;
 import org.example.article.port.ArticleIdGenerator;
 import org.example.article.port.ArticleRepository;
 import org.example.article.usecases.*;
 
 @Getter
+@Accessors(fluent = true)
 public class ArticleConfig {
 
     private final CreateArticleUseCase createArticleUseCase;
