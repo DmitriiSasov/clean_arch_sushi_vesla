@@ -4,6 +4,8 @@ import com.rcore.database.mongo.commons.query.AbstractExampleQuery;
 import org.example.article.port.filters.ArticleFilters;
 import org.springframework.data.mongodb.core.query.Criteria;
 
+import java.util.Optional;
+
 public class FindWithFiltersQuery extends AbstractExampleQuery {
 
     private final ArticleFilters articleFilters;
@@ -15,6 +17,20 @@ public class FindWithFiltersQuery extends AbstractExampleQuery {
 
     @Override
     public Criteria getCriteria() {
-        return Criteria.where("description").regex(".*" + articleFilters.getDescription() + ".*");
+        Criteria c = null;
+        if (articleFilters.getDescription() != null && !articleFilters.getDescription().isBlank()) {
+            c = Criteria.where("description").regex(".*" + articleFilters.getDescription() + ".*");
+        }
+        if (articleFilters.getTitle() != null && !articleFilters.getTitle().isBlank()) {
+            Criteria tmp = Criteria.where("title").regex(".*" + articleFilters.getTitle() + ".*");
+            if (c == null) {
+                c = tmp;
+            } else {
+                c = c.andOperator(tmp);
+            }
+
+        }
+        return c;
+
     }
 }
