@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "articles")
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
